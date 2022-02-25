@@ -1,0 +1,22 @@
+body {
+  font-family: Roboto, sans-serif;
+  margin: 0px;
+}
+
+#input-container {
+  border-bottom: 1px solid black;
+  display: inline-block;
+  position: relative;
+  left: 50%;
+}
+
+#input-container input {
+  height: 24px;
+  border: none;
+  width: 120px;
+}
+
+#input-container input:focus {
+  outline: none;
+}
+
