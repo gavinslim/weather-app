@@ -1,0 +1,271 @@
+{
+  "200": {
+    "description": "thunderstorm with light rain",
+    "icon": "thunderstorm"
+  },
+
+  "201": {
+    "description": "thunderstorm with rain",
+    "icon": "thunderstorm"
+  },
+
+  "202": {
+    "description": "thunderstorm with heavy rain",
+    "icon": "thunderstorm"
+  },
+
+  "210": {
+    "description": "light thunderstorm",
+    "icon": "thunderstorm"
+  },
+
+  "211": {
+    "description": "thunderstorm",
+    "icon": "thunderstorm"
+  },
+
+  "221": {
+    "description": "ragged thunderstorm",
+    "icon": "thunderstorm"
+  },
+
+  "230": {
+    "description": "thunderstorm with light drizzle",
+    "icon": "thunderstorm"
+  },
+
+  "231": {
+    "description": "thunderstorm with drizzle",
+    "icon": "thunderstorm"
+  },
+
+  "232": {
+    "description": "thunderstorm with heavy drizzle",
+    "icon": "thunderstorm"
+  },
+
+  "300": {
+    "description": "light intensity drizzle",
+    "icon": "drizzle"
+  },
+
+  "301": {
+    "description": "drizzle",
+    "icon": "drizzle"
+  },
+
+  "302": {
+    "description": "heavy intensity drizzle",
+    "icon": "drizzle"
+  },
+
+  "310": {
+    "description": "light intensity drizzle rain",
+    "icon": "drizzle"
+  },
+
+  "311": {
+    "description": "drizzle rain",
+    "icon": "drizzle"
+  },
+
+  "312": {
+    "description": "heavy intensity drizzle rain",
+    "icon": "drizzle"
+  },
+
+  "313": {
+    "description": "shower rain and drizzle",
+    "icon": "drizzle"
+  },
+
+  "314": {
+    "description": "heavy shower rain and drizzle",
+    "icon": "drizzle"
+  },
+
+  "321": {
+    "description": "shower drizzle",
+    "icon": "drizzle"
+  },
+
+  "500": {
+    "description": "light rain",
+    "icon": "rain"
+  },
+
+  "501": {
+    "description": "moderate rain",
+    "icon": "rain" 
+  },
+
+  "502": {
+    "description": "heavy intensity rain",
+    "icon": "rain"
+  },
+
+  "503": {
+    "description": "very heavy rain",
+    "icon": "rain"
+  },
+
+  "504": {
+    "description": "extreme rain",
+    "icon": "rain"
+  },
+
+  "511": {
+    "description": "freezing rain",
+    "icon": "rain"
+  },
+
+  "520": {
+    "description": "light intensity shower rain",
+    "icon": "rain"
+  },
+
+  "521": {
+    "description": "shower rain",
+    "icon": "rain"
+  },
+
+  "522": {
+    "description": "heavy intensity shower rain",
+    "icon": "rain"
+  },
+
+  "531": {
+    "description": "ragged shower rain",
+    "icon": "rain"
+  },
+
+  "600": {
+    "description": "light snow",
+    "icon": "snow"
+  },
+
+  "601": {
+    "description": "snow",
+    "icon": "snow"
+  },
+
+  "602": {
+    "description": "heavy snow",
+    "icon": "snow"
+  },
+
+  "611": {
+    "description": "sleet",
+    "icon": "snow"
+  },
+
+  "612": {
+    "description": "light shower sleet",
+    "icon": "snow"
+  },
+
+  "613": {
+    "description": "shower sleet",
+    "icon": "snow"
+  },
+
+  "615": {
+    "description": "light rain and snow",
+    "icon": "snow"
+  },
+
+  "616": {
+    "description": "rain and snow",
+    "icon": "snow"
+  },
+
+  "620": {
+    "description": "light shower snow",
+    "icon": "snow"
+  },
+
+  "621": {
+    "description": "shower snow",
+    "icon": "snow"
+  },
+
+  "622": {
+    "description": "heavy shower snow",
+    "icon": "snow"
+  },
+
+  "701": {
+    "description": "mist",
+    "icon": "mist"
+  },
+
+  "711": {
+    "description": "smoke",
+    "icon": "smoke"
+  },
+
+  "721": {
+    "description": "haze",
+    "icon": "haze"
+  },
+
+  "731": {
+    "description": "sand/dust whirls",
+    "icon": "dust"
+  },
+
+  "741": {
+    "description": "fog",
+    "icon": "fog"
+  },
+
+  "751": {
+    "description": "sand",
+    "icon": "sand"
+  },
+
+  "761": {
+    "description": "dust",
+    "icon": "dust"
+  },
+
+  "762": {
+    "description": "volcanic ash",
+    "icon": "ash"
+  },
+
+  "771": {
+    "description": "squalls",
+    "icon": "squall"
+  },
+
+  "781": {
+    "description": "tornado",
+    "icon": "tornado"
+  },
+
+  "800": {
+    "description": "clear sky",
+    "icon": "clear"
+  },
+
+  "801": {
+    "description": "few clouds",
+    "icon": "clouds"
+  },
+
+  "802": {
+    "description": "scattered clouds",
+    "icon": "clouds"
+  },
+
+  "803": {
+    "description": "broken clouds",
+    "icon": "clouds"
+  },
+
+  "804": {
+    "description": "overcast clouds",
+    "icon": "clouds"
+  }
+}
