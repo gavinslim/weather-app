@@ -1,30 +1,61 @@
+import icons from './icons.json';
+
+function capitalizeFirstLetters(string) {
+  const words = string.split(' ');
+
+  for (let i = 0; i < words.length; i++) {
+    words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+  }
+
+  return words.join(' ');
+}
+
 // Constructor function
 function WeatherData(inData) {
-  console.log(inData);
   this.location = `${inData.name}, ${inData.sys.country}`;
-  this.weather = inData.weather[0].main;
+  this.icon = inData.weather[0].id;
+  this.weather = inData.weather[0].description;
   this.temp = inData.main.temp;
   this.feelsLike = inData.main.feels_like;
   this.windSpeed = inData.wind.speed;
+
+  this.minTemp = inData.main.temp_max;
+  this.maxTemp = inData.main.temp_min;
+  this.pressure = inData.main.pressure;
+  this.humidity = inData.main.humidity;
 }
 
-function addWeatherInfo(field, fieldData) {
-  const temp = document.createElement('div');
-  temp.classList.add(field);
-  temp.textContent = fieldData;
+function getWeatherIcon(code) {
+  const weatherDict = {
+    thunderstorm: 'fa-cloud-rain',
+    clouds: 'fa-cloud',
+    rain: 'fa-cloud-showers-heavy',
+    snow: 'fa-snowflake',
+    clear: 'fa-sun',
+    drizzle: 'fa-cloud-rain',
+    mist: 'fa-smog',
+    tornado: 'fa-wind',
+    squall: 'fa-wind',
+    ash: 'fa-meteor',
+  };
 
-  return temp;
+  const weather = document.querySelector('.weather-icon');
+  weather.className = '';
+  weather.classList.add('weather-icon', 'fa-solid', weatherDict[icons[code].icon]);
+}
+
+function setWeatherInfo(field, fieldData) {
+  const temp = document.querySelector(`#${field}`);
+  temp.textContent = fieldData;
 }
 
 function displayWeatherData(data) {
-  const container = document.querySelector('#weather-container');
+  // Load data for top-left container
+  setWeatherInfo('location', data.location);
+  setWeatherInfo('weather', capitalizeFirstLetters(data.weather));
+  setWeatherInfo('temperature', `${parseInt(data.temp, 10)} °C`);
 
-  container.innerHTML = '';
-
-  container.appendChild(addWeatherInfo('location', data.location));
-  container.appendChild(addWeatherInfo('weather', data.weather));
-  container.appendChild(addWeatherInfo('temp', data.temp));
-  container.appendChild(addWeatherInfo('feels-like', data.feelsLike));
+  getWeatherIcon(data.icon);
 }
 
 // Async API call to Openweathermap
@@ -35,6 +66,7 @@ async function getWeather(searchTerm = 'Vancouver') {
   try {
     const response = await fetch(url, { mode: 'cors' });
     const responseData = await response.json();
+    console.log(responseData);
     const data = new WeatherData(responseData);
     displayWeatherData(data);
   } catch (err) {
@@ -55,6 +87,7 @@ function addUserInputFeature() {
 
 function loadFeatures() {
   addUserInputFeature();
+  getWeather('Vancouver');
 }
 
 export default loadFeatures;

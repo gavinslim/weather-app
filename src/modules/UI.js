@@ -1,4 +1,6 @@
 import loadFeatures from './functions';
+import sunny from '../images/sunny.jpeg';
+import night from '../images/night.jpg';
 
 const content = document.querySelector('.content');
 
@@ -19,9 +21,59 @@ function addUserInput() {
   return container;
 }
 
+function addWeatherInfo(field) {
+  const temp = document.createElement('div');
+  temp.setAttribute('id', `${field}`);
+  return temp;
+}
+
+// Main weather data
+function addMainWeatherContainer() {
+  const container = document.createElement('div');
+  container.setAttribute('id', 'main-container');
+
+  container.appendChild(addWeatherInfo('weather'));
+  container.appendChild(addWeatherInfo('location'));
+
+  const iconContainer = document.createElement('div');
+  iconContainer.setAttribute('id', 'icon-container');
+
+  const icon = document.createElement('div');
+  icon.classList.add('weather-icon');
+  iconContainer.appendChild(icon);
+  iconContainer.appendChild(addWeatherInfo('temperature'));
+
+  container.appendChild(iconContainer);
+
+  container.appendChild(addUserInput());
+
+  return container;
+}
+
+// Supplemental weather data
+function addSuppWeatherContainer() {
+  const container = document.createElement('div');
+  container.setAttribute('id', 'supp-container');
+
+  return container;
+}
+
+// Daily weather data
+function addDailyWeatherContainer() {
+  const container = document.createElement('div');
+  container.setAttribute('id', 'daily-container');
+
+  return container;
+}
+
 function addWeatherContainer() {
   const container = document.createElement('div');
   container.setAttribute('id', 'weather-container');
+
+  container.appendChild(addMainWeatherContainer());
+  container.appendChild(addSuppWeatherContainer());
+  container.appendChild(addDailyWeatherContainer());
+
   return container;
 }
 
@@ -34,7 +86,14 @@ function initHeader() {
 function initMain() {
   const main = document.createElement('div');
   main.setAttribute('id', 'main');
-  main.appendChild(addUserInput());
+  main.classList.add('background-img');
+
+  // const img = new Image();
+  // img.src = night;
+  // img.classList.add('background-img');
+  // main.appendChild(img);
+
+  // main.appendChild(addUserInput());
   main.appendChild(addWeatherContainer());
   content.appendChild(main);
 }
@@ -46,7 +105,7 @@ function initFooter() {
 }
 
 function loadpage() {
-  initHeader();
+  // initHeader();
   initMain();
   initFooter();
 
