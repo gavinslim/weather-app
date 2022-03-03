@@ -10,22 +10,40 @@ function capitalizeFirstLetters(string) {
   return words.join(' ');
 }
 
+function getTime(unixTime) {
+  const date = new Date(unixTime * 1000);
+  let hours = date.getHours();
+  const minutes = `0${date.getMinutes()}`;
+  const seconds = `0${date.getSeconds()}`;
+
+  const end = hours < 12 ? 'am' : 'pm';
+  if (hours > 12) { hours -= 12; }
+
+  const formattedTime = `${hours}:${minutes.substr(-2)} ${end}`;
+
+  return formattedTime;
+}
+
 // Constructor function
 function WeatherData(inData) {
   this.location = `${inData.name}, ${inData.sys.country}`;
   this.icon = inData.weather[0].id;
   this.weather = inData.weather[0].description;
   this.temp = inData.main.temp;
-  this.feelsLike = inData.main.feels_like;
-  this.windSpeed = inData.wind.speed;
 
-  this.minTemp = inData.main.temp_max;
-  this.maxTemp = inData.main.temp_min;
+  this.feelsLike = inData.main.feels_like;
+  this.maxTemp = inData.main.temp_max;
+  this.minTemp = inData.main.temp_min;
+
+  this.windSpeed = inData.wind.speed;
   this.pressure = inData.main.pressure;
   this.humidity = inData.main.humidity;
+
+  this.sunrise = inData.sys.sunrise;
+  this.sunset = inData.sys.sunset;
 }
 
-function getWeatherIcon(code) {
+function setWeatherIcon(code) {
   const weatherDict = {
     thunderstorm: 'fa-cloud-rain',
     clouds: 'fa-cloud',
@@ -37,6 +55,7 @@ function getWeatherIcon(code) {
     tornado: 'fa-wind',
     squall: 'fa-wind',
     ash: 'fa-meteor',
+    haze: 'fa-smog',
   };
 
   const weather = document.querySelector('.weather-icon');
@@ -50,12 +69,22 @@ function setWeatherInfo(field, fieldData) {
 }
 
 function displayWeatherData(data) {
-  // Load data for top-left container
+  // Load data for main container
   setWeatherInfo('location', data.location);
   setWeatherInfo('weather', capitalizeFirstLetters(data.weather));
   setWeatherInfo('temperature', `${parseInt(data.temp, 10)} °C`);
+  setWeatherIcon(data.icon);
+  setWeatherInfo('temp-high', `${parseInt(data.maxTemp, 10)} °C`);
+  setWeatherInfo('temp-low', `${parseInt(data.minTemp, 10)} °C`);
 
-  getWeatherIcon(data.icon);
+  // Load wind, pressure, and humidity
+  setWeatherInfo('wind', `${parseInt(data.windSpeed, 10)} m/s`);
+  setWeatherInfo('pressure', `${data.pressure} hPa`);
+  setWeatherInfo('humidity', `${data.humidity} %`);
+
+  // Load data for supplemental container
+  setWeatherInfo('sunrise', getTime(data.sunrise));
+  setWeatherInfo('sunset', getTime(data.sunset));
 }
 
 // Async API call to Openweathermap

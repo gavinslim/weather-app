@@ -1,6 +1,6 @@
 import loadFeatures from './functions';
-import sunny from '../images/sunny.jpeg';
-import night from '../images/night.jpg';
+// import sunny from '../images/sunny.jpeg';
+// import night from '../images/night.jpg';
 
 const content = document.querySelector('.content');
 
@@ -27,6 +27,42 @@ function addWeatherInfo(field) {
   return temp;
 }
 
+function addSubSuppContainer(iconClass, field) {
+  const container = document.createElement('div');
+  container.classList.add('sub-supplemental');
+
+  // Add icon
+  const icon = document.createElement('div');
+  icon.classList.add('supp-icon', 'fa-solid', iconClass);
+  container.appendChild(icon);
+
+  // Add value
+  container.appendChild(addWeatherInfo(field));
+
+  return container;
+}
+
+function addTempContainer() {
+  const container = document.createElement('div');
+  container.setAttribute('id', 'temperature-container');
+
+  const icon = document.createElement('div');
+  icon.classList.add('weather-icon');
+  container.appendChild(icon);
+
+  const temperature = document.createElement('div');
+  temperature.setAttribute('id', 'data-container');
+
+  const currentTempText = document.createElement('div');
+  currentTempText.textContent = 'Current';
+  temperature.appendChild(currentTempText);
+
+  temperature.appendChild(addWeatherInfo('temperature'));
+  container.appendChild(temperature);
+
+  return container;
+}
+
 // Main weather data
 function addMainWeatherContainer() {
   const container = document.createElement('div');
@@ -35,17 +71,14 @@ function addMainWeatherContainer() {
   container.appendChild(addWeatherInfo('weather'));
   container.appendChild(addWeatherInfo('location'));
 
-  const iconContainer = document.createElement('div');
-  iconContainer.setAttribute('id', 'icon-container');
-
-  const icon = document.createElement('div');
-  icon.classList.add('weather-icon');
-  iconContainer.appendChild(icon);
-  iconContainer.appendChild(addWeatherInfo('temperature'));
-
-  container.appendChild(iconContainer);
-
+  container.appendChild(addTempContainer());
   container.appendChild(addUserInput());
+
+  const range = document.createElement('div');
+  range.setAttribute('id', 'range');
+  range.appendChild(addSubSuppContainer('fa-temperature-low', 'temp-low'));
+  range.appendChild(addSubSuppContainer('fa-temperature-high', 'temp-high'));
+  container.appendChild(range);
 
   return container;
 }
@@ -53,7 +86,16 @@ function addMainWeatherContainer() {
 // Supplemental weather data
 function addSuppWeatherContainer() {
   const container = document.createElement('div');
-  container.setAttribute('id', 'supp-container');
+  container.setAttribute('id', 'supplemental-container');
+
+  // Wind speed, pressure, humidity
+  container.appendChild(addSubSuppContainer('fa-wind', 'wind'));
+  container.appendChild(addSubSuppContainer('fa-stopwatch', 'pressure'));
+  container.appendChild(addSubSuppContainer('fa-droplet', 'humidity'));
+
+  // Sunrise and sunset time
+  container.appendChild(addSubSuppContainer('fa-sun', 'sunrise'));
+  container.appendChild(addSubSuppContainer('fa-moon', 'sunset'));
 
   return container;
 }
@@ -66,35 +108,15 @@ function addDailyWeatherContainer() {
   return container;
 }
 
-function addWeatherContainer() {
-  const container = document.createElement('div');
-  container.setAttribute('id', 'weather-container');
-
-  container.appendChild(addMainWeatherContainer());
-  container.appendChild(addSuppWeatherContainer());
-  container.appendChild(addDailyWeatherContainer());
-
-  return container;
-}
-
-function initHeader() {
-  const header = document.createElement('div');
-  header.setAttribute('id', 'header');
-  content.appendChild(header);
-}
-
 function initMain() {
   const main = document.createElement('div');
   main.setAttribute('id', 'main');
   main.classList.add('background-img');
 
-  // const img = new Image();
-  // img.src = night;
-  // img.classList.add('background-img');
-  // main.appendChild(img);
+  main.appendChild(addMainWeatherContainer());
+  main.appendChild(addSuppWeatherContainer());
+  main.appendChild(addDailyWeatherContainer());
 
-  // main.appendChild(addUserInput());
-  main.appendChild(addWeatherContainer());
   content.appendChild(main);
 }
 
