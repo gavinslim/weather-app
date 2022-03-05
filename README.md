@@ -1,6 +1,6 @@
 # The Odin Project: Weather App
 
-<img src="image/mainPage.png" alt="main-page"/> 
+<img src="src/images/mainPage.png" alt="main-page"/> 
 
 Implementation of the Weather App project from The Odin Project [curriculum](https://www.theodinproject.com/).
 
