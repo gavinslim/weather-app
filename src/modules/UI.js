@@ -1,6 +1,4 @@
 import loadFeatures from './functions';
-// import sunny from '../images/sunny.jpeg';
-// import night from '../images/night.jpg';
 
 const content = document.querySelector('.content');
 
@@ -68,17 +66,19 @@ function addMainWeatherContainer() {
   const container = document.createElement('div');
   container.setAttribute('id', 'main-container');
 
+  container.appendChild(addWeatherInfo('date'));
   container.appendChild(addWeatherInfo('weather'));
   container.appendChild(addWeatherInfo('location'));
 
   container.appendChild(addTempContainer());
+
   container.appendChild(addUserInput());
 
-  const range = document.createElement('div');
-  range.setAttribute('id', 'range');
-  range.appendChild(addSubSuppContainer('fa-temperature-low', 'temp-low'));
-  range.appendChild(addSubSuppContainer('fa-temperature-high', 'temp-high'));
-  container.appendChild(range);
+  // const range = document.createElement('div');
+  // range.setAttribute('id', 'range');
+  // range.appendChild(addSubSuppContainer('fa-temperature-low', 'temp-min'));
+  // range.appendChild(addSubSuppContainer('fa-temperature-high', 'temp-max'));
+  // container.appendChild(range);
 
   return container;
 }
@@ -105,6 +105,19 @@ function addDailyWeatherContainer() {
   const container = document.createElement('div');
   container.setAttribute('id', 'daily-container');
 
+  for (let i = 1; i <= 7; i += 1) {
+    container.innerHTML += `
+      <div class='daily'>
+        <div class='date-str' id='date-str-${i}'></div>
+        <div class='date-num' id='date-num-${i}'></div>
+        <div class='icon' id='icon-${i}'></div>
+        <div class='range'>
+          <div id='max-${i}'></div>
+          <div id='min-${i}'></div>
+        </div>
+      </div>
+    `;
+  }
   return container;
 }
 
